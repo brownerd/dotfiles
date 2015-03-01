@@ -1,0 +1,12 @@
+# Set PATH, CDPATH, EDITOR, etc.
+
+#export EDITOR="atom -w"
+
+export PATH=$PATH:~/bin
+
+#export CODAPATH="/Applications/Coda 2.app"
+
+export PATH=$PATH:/Applications/MAMP/Library/bin
+
+
+# export PATH="/usr/local/git/bin:$PATH"

@@ -1,0 +1,271 @@
+# LINT : http://www.shellcheck.net/
+# Obsolete stuff - http://wiki.bash-hackers.org/scripting/obsolete
+
+
+#
+# Local Aliases
+#------------------------------------------------------------------------------
+
+# Common Locations
+alias cdsites='cd ~/desktop/folders/sites'
+alias cdesk='cd ~/desktop/'
+alias cdBash='cd ~/bin/dotfiles/bash/'
+alias ..='cd ..'
+
+# Common Downloads
+# instructions > goto desktop [or any folder] and then run curlWP
+alias curlWP='curl -O http://wordpress.org/latest.zip'
+
+#Unzip contents
+alias uz='unzip'
+
+
+# Common File Structures
+alias newsite='mkdir contract doc design images local seo'
+
+# Utility
+alias reload='source ~/bin/dotfiles/bash/aliases'
+alias reloade='source ~/bin/dotfiles/bash/env'
+alias reloadc='source ~/bin/dotfiles/bash/config'
+alias ea='atom -w ~/bin/dotfiles/bash/aliases && reload' # Edit aliases
+alias ec='atom -w ~/bin/dotfiles/bash/config && reloadc' # Edit Config and Reload
+alias ee='atom -w ~/bin/dotfiles/bash/env && reloade'
+
+# Setup new site - Run from the SITES directory
+function newClient() { cp -R ~/desktop/folders/sites/zClient/template "$(pwd);" mv template ~/desktop/folders/sites/"$1"; }
+function newWP() { cp -R ~/desktop/folders/sites/rhythmkit "$(pwd);" mv rhythmkit "$1"; }
+
+
+#List
+alias a='ls -A' # -A all except literal . ..
+alias la="ls -A -l -G"		#
+alias l.='ls -1 -d .[^.]*' 	# list .dotfiles only
+alias lh='ls -lh'			#
+alias ll='ls -lhG'  		# -l long listing, human readable, no group info - color coded
+alias lt='ls -lt' 			# sort with recently modified first
+alias l='ls -lhGt'  		# -l long listing, most recent first  -G color
+alias l1='ls -1 -a'  		# list all in one column
+
+#Make nested directories : md root/themes/
+alias md='mkdir -p'
+
+# Processes
+alias tu='top -o cpu' # cpu
+alias tm='top -o vsize' # memory
+
+function cdc() {  cd "$1" ls ; }
+
+
+#
+# IMAGE OPTIMIZATION
+#------------------------------------------------------------------------------
+
+alias imgcrusher='imageoptim -a -j -q -d'
+function imgcrush() { imageoptim -a -j -q -d "$1"; }
+
+
+#
+# MySQL MAMP
+#------------------------------------------------------------------------------
+
+alias mmy='/Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot'
+alias showdb='SHOW DATABASES;'
+
+
+#
+# SECURITY aliases (for using ssh to check for hacks) -> CD to wp-content first!
+#------------------------------------------------------------------------------
+
+# Search for the name of a known hack file AND list the path
+alias findapps='find * -iname "wp-apps.php" -ls'
+
+# Search the uploads directory for any .php files
+alias uploadshack='find uploads -name "*.php" -print'
+
+# Investigate all recently modified files
+alias changes10='find . -mtime -10 -print'
+
+
+#Be sure to also look for all .htaccess files on the server. Here is one quick way to see how many exist on your server:
+alias htall='find [path] -name .htaccess -type f | wc -l'
+
+#And this will tell you where exactly those files are:
+alias htsort='find [path] -name .htaccess -type f | sort'
+
+#
+# GIT ALIASES
+#------------------------------------------------------------------------------
+
+#Git Basic
+alias gi='git init'
+alias gs='git status -sb'
+alias ga='git add'
+alias ga.='git add .'
+alias gai='git add -i'
+alias gcm='git commit -m'
+
+# Verbose
+alias gc='git commit -v'
+
+# Verbose and untracked files
+alias gca='git commit -v -a'
+
+# HUB for github from the command line
+alias git='hub'
+
+# ADD, Commit and message
+function gmess() { git commit -am "$1"; }
+
+# Run after deleting a tracked file
+alias guns='git add -u'
+
+# Git Branch
+#------------------------------------------------------------------------------
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbr='git branch -r'
+alias gbd='git branch -d' #delete local branch
+alias gbD='git push origin :'
+alias gbdr='git push origin' #delete remote branch
+alias gco='git checkout'
+alias gcob='git checkout -b'
+
+
+# Git Merge
+#------------------------------------------------------------------------------
+alias gmerge='git merge'
+alias gmsq='git merge --squash'
+alias gnoff='git merge --no-ff'
+
+#Git Remote
+#------------------------------------------------------------------------------
+alias getch='git fetch'
+alias gull='git pull'
+alias gnp='git-notpushed'
+alias gush='git push'
+alias gushset='git push --set-upstream origin'
+alias gusho='git push origin'
+alias grv='git remote -v'
+
+alias gprune='git remote prune origin --dry-run'
+
+# Git Merge
+#------------------------------------------------------------------------------
+alias gmerge='git merge'
+alias mergek='git mergetool'
+alias merget='git mergetool'
+
+
+# Git Diff
+#------------------------------------------------------------------------------
+alias gdiff='git diff'
+alias diffm='git diff master'
+alias diffy='git difftool "@{yesterday}"'
+alias kdiff='git difftool -y -t Kaleidoscope'
+
+
+alias diffu='git difftool' 			# Show UNSTAGED changes
+alias diffs='git difftool --cached'	#View STAGES, but NOT committed, changes
+alias diffh='git difftool HEAD'		#View STAGED and UNSTAGED changes compared to latest commit
+alias diffhh='git difftool HEAD^ HEAD'			# View changes between current and latest commit
+function diffb() { git difftool "$1"; }	#View both staged and unstaged changes compared to named branch
+function diffB() { git difftool "$1" "$2"; }
+
+# Git Remote
+#------------------------------------------------------------------------------
+alias getch='git fetch'
+alias gull='git pull'
+alias gush='git push'
+alias gusho='git push origin'
+alias gushseto='git push --set-upstream origin'
+alias gushsetom='git push --set-upstream origin master'
+alias grv='git remote -v'
+
+#git push -u origin master
+
+
+# Git Reset
+#------------------------------------------------------------------------------
+alias unstage='git reset'
+alias greset='git reset'
+
+#Change commit message / or add latest changes to previous commit
+alias gamend='git commit --amend -m'
+
+
+#Roll commits back into a previous one without loosing file changes.
+function gclean() { git reset --soft HEAD~"$1"; }
+
+
+#Roll back latest commit to staging  http://git-scm.com/blog
+alias uncommitS='git reset --soft HEAD~'
+alias resetS='git reset --soft HEAD~'
+
+
+#Roll back latest commit to working directory (kill commit and staging)
+alias uncommitH='git reset --hard HEAD~'
+alias resetH='git reset --hard HEAD~'
+
+
+# Stage HUNKS!
+#------------------------------------------------------------------------------
+alias gunk='git add -p'
+
+
+# Git Stash
+#------------------------------------------------------------------------------
+alias gash='git stash save'
+alias gashl='git stash list'
+alias gashpretty="git stash list --pretty=format:'%Cblue%h %Cred* %C(yellow)%s'"
+alias gashd='git stash drop'
+alias gashc='git stash clear'
+alias gashpop='git stash pop'
+alias gashbranch='git stash branch'
+alias gashp='git stash save -p'
+
+
+# Git Log
+#------------------------------------------------------------------------------
+alias gl1='git log --graph --decorate --pretty=format:"%C(bold green)%h%Creset : %C(green)(%cr)%Creset — %C(bold white)%s%Creset %C(magenta)<%an>%Creset %C(bold yellow)%d" --abbrev-commit'
+alias gl2='git log --all --graph --decorate --oneline --abbrev-commit'
+alias glp='git log -p -2'
+
+# log hash and commit on one line with n amount of commits
+function glo() { git log --oneline -"$1"; }
+function glos() { git log --since="$1".weeks; }
+
+# This show the committer at the end of the string
+function gnews() { git log --decorate --pretty=format:"%C(bold black)%h%Creset %C(black)%ad%Creset|%C(white)%cr%Creset — %C(black)%s %Creset %C(magenta)> %an %Creset" --date=short --abbrev-commit -"$1"; }
+
+
+#Git Config
+#------------------------------------------------------------------------------
+alias egc='atom -w ~/.gitconfig'
+alias egk='atom -w ~/.gitk'
+
+#Git Config Local
+alias gatom='atom .git/config'
+
+#Dandelion
+#------------------------------------------------------------------------------
+alias dand='dandelion deploy'
+alias dans='dandelion status'
+
+
+
+# Jekyll
+#------------------------------------------------------------------------------
+
+alias jwatch='jekyll serve --watch'
+alias jserve='jekyll serve'
+
+
+# NPM
+#------------------------------------------------------------------------------
+
+alias igulp='npm install --save-dev'
+
+
+# Wifi Password
+#------------------------------------------------------------------------------
+alias wifi='wifi-password'

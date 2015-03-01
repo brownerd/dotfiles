@@ -1,0 +1,95 @@
+# Colors from http://wiki.archlinux.org/index.php/Color_Bash_Prompt
+# misc
+
+NO_COLOR='\e[0m' #disable any colors
+
+# regular colors
+BLACK='\e[0;30m'
+RED='\e[0;31m'
+GREEN='\e[0;32m'
+YELLOW='\e[0;33m'
+BLUE='\e[0;34m'
+MAGENTA='\e[0;35m'
+CYAN='\e[0;36m'
+WHITE='\e[0;37m'
+
+# emphasized (bolded) colors
+EBLACK='\e[1;30m'
+ERED='\e[1;31m'
+EGREEN='\e[1;32m'
+EYELLOW='\e[1;33m'
+EBLUE='\e[1;34m'
+EMAGENTA='\e[1;35m'
+ECYAN='\e[1;36m'
+EWHITE='\e[1;37m'
+
+# underlined colors
+UBLACK='\e[4;30m'
+URED='\e[4;31m'
+UGREEN='\e[4;32m'
+UYELLOW='\e[4;33m'
+UBLUE='\e[4;34m'
+UMAGENTA='\e[4;35m'
+UCYAN='\e[4;36m'
+UWHITE='\e[4;37m'
+
+# background colors
+BBLACK='\e[40m'
+BRED='\e[41m'
+BGREEN='\e[42m'
+BYELLOW='\e[43m'
+BBLUE='\e[44m'
+BMAGENTA='\e[45m'
+BCYAN='\e[46m'
+BWHITE='\e[47m'
+
+# High Intensty
+IBlack='\e[0;90m'       # Black
+IRed='\e[0;91m'         # Red
+IGreen='\e[0;92m'       # Green
+IYellow='\e[0;93m'      # Yellow
+IBlue='\e[0;94m'        # Blue
+IPurple='\e[0;95m'      # Purple
+ICyan='\e[0;96m'        # Cyan
+IWhite='\e[0;97m'       # White
+
+# Bold High Intensty
+BIBlack='\e[1;90m'      # Black
+BIRed='\e[1;91m'        # Red
+BIGreen='\e[1;92m'      # Green
+BIYellow='\e[1;93m'     # Yellow
+BIBlue='\e[1;94m'       # Blue
+BIPurple='\e[1;95m'     # Purple
+BICyan='\e[1;96m'       # Cyan
+BIWhite='\e[1;97m'      # White
+
+# High Intensty backgrounds
+On_IBlack='\e[0;100m'   # Black
+On_IRed='\e[0;101m'     # Red
+On_IGreen='\e[0;102m'   # Green
+On_IYellow='\e[0;103m'  # Yellow
+On_IBlue='\e[0;104m'    # Blue
+On_IPurple='\e[10;95m'  # Purple
+On_ICyan='\e[0;106m'    # Cyan
+On_IWhite='\e[0;107m'   # White
+
+#Text and background color combos
+#Green text / Black Background
+GREENBLACK='\e[32;40m'
+
+#Black text / Green Background
+BLACKGREEN='\e[30;42m'
+
+#Black text / Intense Green Background
+BLACKHIGREEN='\e[30;92m'
+
+#Black text / Yellow Background
+BLACKYELLOW='\e[30;103m'
+
+#Black text / White Background
+BLACKWHITE='\e[30;47m'
+
+# Update the command prompt to be <user>:<current_directory>(git_branch) >
+# Note that the git branch is given a special color
+
+PS1="\n\u:\w \[$BLACKHIGREEN\]\$(vcprompt)\[$NO_COLOR\] \n☞ "
