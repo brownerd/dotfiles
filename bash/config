@@ -92,4 +92,6 @@ BLACKWHITE='\e[30;47m'
 # Update the command prompt to be <user>:<current_directory>(git_branch) >
 # Note that the git branch is given a special color
 
-PS1="\n\u:\w \[$BLACKHIGREEN\]\$(vcprompt)\[$NO_COLOR\] \n☞ "
+# Special characters: http://copypastecharacter.com/
+
+PS1="\|°▿▿▿▿°|\w \[$BLACKHIGREEN\]\$(vcprompt)\[$NO_COLOR\] \n⬢ "
