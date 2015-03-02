@@ -94,4 +94,4 @@ BLACKWHITE='\e[30;47m'
 
 # Special characters: http://copypastecharacter.com/
 
-PS1="\|°▿▿▿▿°|\w \[$BLACKHIGREEN\]\$(vcprompt)\[$NO_COLOR\] \n⬢ "
+PS1="⬢ |°▿▿▿▿°|\w \[$BLACKHIGREEN\]\$(vcprompt)\[$NO_COLOR\] \n⬡ "
